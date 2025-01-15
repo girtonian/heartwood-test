@@ -3,30 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Heartwood</title>
+    <title>Heartwood</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
+        :root {
+            --primary-color: #000000;
+            --background-color: #ffffff;
+            --accent-color: #ff3b30;
+            --grid-unit: 8px;
+            --content-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        p {
-            color: #34495e;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            text-align: justify;
+            color: var(--primary-color);
+            background-color: var(--background-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: calc(var(--grid-unit) * 4);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: calc(var(--grid-unit) * 4);
+        }
+
+        header {
+            margin-bottom: calc(var(--grid-unit) * 12);
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: calc(var(--grid-unit) * 6);
+        }
+
+        h1 {
+            font-size: calc(var(--grid-unit) * 12);
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: calc(var(--grid-unit) * 6);
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: calc(var(--grid-unit) * 6);
+            font-weight: 500;
+            margin-bottom: calc(var(--grid-unit) * 4);
+            grid-column: 1 / -1;
+        }
+
+        p {
+            font-size: calc(var(--grid-unit) * 2.25);
+            margin-bottom: calc(var(--grid-unit) * 3);
+            max-width: 65ch;
+        }
+
+        .intro {
+            grid-column: 1 / 8;
+            margin-bottom: calc(var(--grid-unit) * 8);
+        }
+
+        .services {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(var(--grid-unit) * 4);
+            margin-bottom: calc(var(--grid-unit) * 8);
+        }
+
+        .service-item {
+            padding: calc(var(--grid-unit) * 3);
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .contact {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: calc(var(--grid-unit) * 4);
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--grid-unit) * 2);
+        }
+
+        .accent-text {
+            color: var(--accent-color);
+        }
+
+        .number {
+            font-size: calc(var(--grid-unit) * 3);
+            font-weight: 700;
+            margin-bottom: var(--grid-unit);
+        }
+
+        @media (max-width: 768px) {
+            .intro {
+                grid-column: 1 / -1;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: calc(var(--grid-unit) * 8);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Heartwood</h1>
-    <p>This is a simple webpage to demonstrate Git workflow.</p>
+    <div class="container">
+        <header>
+            <h1>HEART<br>WOOD<span class="accent-text">.</span></h1>
+        </header>
+
+        <main class="grid">
+            <div class="intro">
+                <p class="number">01</p>
+                <h2>About</h2>
+                <p>Heartwood represents the core of innovation and sustainable design. We create solutions that grow naturally from your needs, just as a tree grows from its heartwood.</p>
+            </div>
+
+            <section class="services">
+                <div class="service-item">
+                    <p class="number">02</p>
+                    <h2>Strategy</h2>
+                    <p>Strategic consulting with a focus on sustainable growth and innovation.</p>
+                </div>
+
+                <div class="service-item">
+                    <p class="number">03</p>
+                    <h2>Technology</h2>
+                    <p>Cutting-edge solutions built on proven technological foundations.</p>
+                </div>
+
+                <div class="service-item">
+                    <p class="number">04</p>
+                    <h2>Design</h2>
+                    <p>Human-centered design that prioritizes clarity and functionality.</p>
+                </div>
+            </section>
+
+            <section class="contact">
+                <div class="contact-item">
+                    <p class="number">05</p>
+                    <h2>Email</h2>
+                    <p>info@heartwood.example</p>
+                </div>
+
+                <div class="contact-item">
+                    <h2>Phone</h2>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+
+                <div class="contact-item">
+                    <h2>Location</h2>
+                    <p>123 Innovation Street<br>Tech City, TC 12345</p>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
