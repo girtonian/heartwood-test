@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
         :root {
-            --primary-color: #000000;
-            --background-color: #ffffff;
-            --accent-color: #ff3b30;
             --grid-unit: 8px;
-            --content-width: 1200px;
+            --primary-color: #000000;
+            --secondary-color: #D40000;
+            --background-color: #ffffff;
+            --grid-color: #f5f5f5;
         }
 
         * {
@@ -21,165 +21,127 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: var(--primary-color);
             background-color: var(--background-color);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: var(--content-width);
-            margin: 0 auto;
             padding: calc(var(--grid-unit) * 4);
         }
 
-        .grid {
+        .grid-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: calc(var(--grid-unit) * 4);
+            gap: calc(var(--grid-unit) * 3);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         header {
-            margin-bottom: calc(var(--grid-unit) * 12);
+            grid-column: 1 / -1;
+            margin-bottom: calc(var(--grid-unit) * 8);
             border-bottom: 1px solid var(--primary-color);
-            padding-bottom: calc(var(--grid-unit) * 6);
+            padding-bottom: calc(var(--grid-unit) * 4);
         }
 
         h1 {
-            font-size: calc(var(--grid-unit) * 12);
+            font-size: calc(var(--grid-unit) * 8);
             font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: calc(var(--grid-unit) * 6);
-            grid-column: 1 / -1;
+            letter-spacing: -0.02em;
+            margin-bottom: calc(var(--grid-unit) * 2);
         }
 
         h2 {
-            font-size: calc(var(--grid-unit) * 6);
+            font-size: calc(var(--grid-unit) * 4);
             font-weight: 500;
-            margin-bottom: calc(var(--grid-unit) * 4);
-            grid-column: 1 / -1;
+            margin-bottom: calc(var(--grid-unit) * 3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         p {
-            font-size: calc(var(--grid-unit) * 2.25);
+            font-size: calc(var(--grid-unit) * 2);
             margin-bottom: calc(var(--grid-unit) * 3);
-            max-width: 65ch;
         }
 
         .intro {
-            grid-column: 1 / 8;
+            grid-column: 3 / 11;
             margin-bottom: calc(var(--grid-unit) * 8);
         }
 
-        .services {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: calc(var(--grid-unit) * 4);
-            margin-bottom: calc(var(--grid-unit) * 8);
+        .section {
+            grid-column: span 4;
+            position: relative;
         }
 
-        .service-item {
-            padding: calc(var(--grid-unit) * 3);
-            border: 1px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .service-item:hover {
+        .section::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
             background-color: var(--primary-color);
-            color: var(--background-color);
+            margin-bottom: calc(var(--grid-unit) * 3);
         }
 
-        .contact {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: calc(var(--grid-unit) * 4);
+        .contact-list {
+            list-style: none;
+            margin-top: calc(var(--grid-unit) * 2);
         }
 
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--grid-unit) * 2);
+        .contact-list li {
+            margin-bottom: calc(var(--grid-unit) * 2);
         }
 
-        .accent-text {
-            color: var(--accent-color);
-        }
-
-        .number {
-            font-size: calc(var(--grid-unit) * 3);
-            font-weight: 700;
-            margin-bottom: var(--grid-unit);
+        .red-accent {
+            color: var(--secondary-color);
         }
 
         @media (max-width: 768px) {
+            .grid-container {
+                gap: calc(var(--grid-unit) * 2);
+            }
+
             .intro {
                 grid-column: 1 / -1;
             }
 
-            .contact {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: calc(var(--grid-unit) * 8);
+            .section {
+                grid-column: 1 / -1;
+                margin-bottom: calc(var(--grid-unit) * 4);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="grid-container">
         <header>
-            <h1>HEART<br>WOOD<span class="accent-text">.</span></h1>
+            <h1>Heart<span class="red-accent">wood</span></h1>
         </header>
 
-        <main class="grid">
-            <div class="intro">
-                <p class="number">01</p>
-                <h2>About</h2>
-                <p>Heartwood represents the core of innovation and sustainable design. We create solutions that grow naturally from your needs, just as a tree grows from its heartwood.</p>
-            </div>
+        <div class="intro">
+            <p>We are a design-driven organization dedicated to crafting meaningful solutions through systematic thinking and precise execution.</p>
+        </div>
 
-            <section class="services">
-                <div class="service-item">
-                    <p class="number">02</p>
-                    <h2>Strategy</h2>
-                    <p>Strategic consulting with a focus on sustainable growth and innovation.</p>
-                </div>
+        <div class="section">
+            <h2>About</h2>
+            <p>Heartwood embodies the principles of clarity, precision, and purpose. We believe in creating sustainable solutions that stand the test of time.</p>
+        </div>
 
-                <div class="service-item">
-                    <p class="number">03</p>
-                    <h2>Technology</h2>
-                    <p>Cutting-edge solutions built on proven technological foundations.</p>
-                </div>
+        <div class="section">
+            <h2>Services</h2>
+            <p>Strategic Consulting</p>
+            <p>Technology Solutions</p>
+            <p>Sustainable Development</p>
+            <p>Innovation Management</p>
+        </div>
 
-                <div class="service-item">
-                    <p class="number">04</p>
-                    <h2>Design</h2>
-                    <p>Human-centered design that prioritizes clarity and functionality.</p>
-                </div>
-            </section>
-
-            <section class="contact">
-                <div class="contact-item">
-                    <p class="number">05</p>
-                    <h2>Email</h2>
-                    <p>info@heartwood.example</p>
-                </div>
-
-                <div class="contact-item">
-                    <h2>Phone</h2>
-                    <p>+1 (555) 123-4567</p>
-                </div>
-
-                <div class="contact-item">
-                    <h2>Location</h2>
-                    <p>123 Innovation Street<br>Tech City, TC 12345</p>
-                </div>
-            </section>
-        </main>
+        <div class="section">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li>info@heartwood.example</li>
+                <li>+1 (555) 123-4567</li>
+                <li>123 Innovation Street<br>Tech City, TC 12345</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
